@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">log out</button>
+    </form>
+  </div>
+</nav>
+<br><br><br><br>
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+  <div style="width: 70%">
+
+    <div *ngFor="let pr of allProducts" class="card" style=" margin-bottom: 1rem">
+      <div class="card-body">
+        <h5 class="card-title">{{pr.name}}</h5>
+        <p class="card-text">{{pr.description}}</p>
+      </div>
+
+      <div class="card-body">
+        <a style="color: green ; cursor: pointer" class="card-link" (click)="update(pr)">Update</a>
+        <a style="color: red ; cursor: pointer" class="card-link" (click)="delete(pr)">Delete</a>
+      </div>
+    </div>
+
+  </div>
+  <div style="width: 30%">
+    <form [formGroup]="productForm">
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Product name</div>
+          </div>
+          <input formControlName="name" type="text" class="form-control"  placeholder="name">
+        </div>
+      </div>
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Product description</div>
+          </div>
+          <textarea formControlName="description" type="text" class="form-control" placeholder="description"></textarea>
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2" (click)="submitForm()">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</div>
